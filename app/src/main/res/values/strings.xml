@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">slide3</string>
+    <string name="resume">App is resumed</string>
+    <string name="pause">App is paused</string>
+    <string name="text2">Text Message for Second Activity</string>
+    <string name="Text1">Text Message for Main Activity</string>
+    <string name="ButtonClick">Click to change activity</string>
+</resources>
