@@ -17,4 +17,8 @@ The 2 number written in front of the onResume is 2 parameter which are modified 
 By running the project, there will be an EditBox and a Button. Write your message in the EditBox and send it by clicking the Button. As you see, your message will be shown in the other activity named DisplayMessageActivity. So the MainActivity is paused. If you get back from the DisplayMessageActivity, the MainActivity is resumed again.
 
 
+<p align="center">
+<img src="./pic/MainActivity.png" width="300" height="500">
+<img src="./pic/DisplayMessage.png" width="300" height="500">
+</p>
 
