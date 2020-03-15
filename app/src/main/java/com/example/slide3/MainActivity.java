@@ -5,11 +5,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "extra_message";
@@ -18,17 +22,17 @@ public class MainActivity extends AppCompatActivity {
     static final String STATE_LEVEL = "playerLevel";
     int mCurrentScore = 0;
     int mCurrentLevel = 0;
+    TextView textView;
+    Button button;
+    Resources resources;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.article_view);
-        Log.e(TAG, "onCreate");
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        HeadlinesFragment fragment = new HeadlinesFragment();
-        fragmentTransaction.add(R.id.fragment_container, fragment);
-        fragmentTransaction.commit();
-//        instead of onRestoreInstanceState :
+        setContentView(R.layout.activity_main);
+
+//        instead of onRestoreInstanceState function:
+
 //        if (savedInstanceState != null) {
 //            mCurrentScore = savedInstanceState.getInt(STATE_SCORE);
 //            mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);
@@ -37,53 +41,53 @@ public class MainActivity extends AppCompatActivity {
 //            // Probably initialize members with default values for a new instance
 //        }
     }
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        TextView text = new TextView(this);
-//        Log.e(TAG, "onStart");
-//    }
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        TextView text = new TextView(this);
-//        text.setText(R.string.resume);
-//        Log.e(TAG, "onResume " + mCurrentLevel +" "+ mCurrentScore);
-//    }
-//    @Override
-//    protected void onPause() {
-//
-//        super.onPause();
-//        TextView text = new TextView(this);
-//        text.setText(R.string.pause);
-//        mCurrentScore = 1;
-//        mCurrentLevel = 2;
-//        Log.e(TAG, "onPause");
-//    }
-//    @Override
-//    protected void onStop() {
-//        Log.e(TAG, "onStop");
-//        super.onStop();
-//    }
-//
-//    @Override
-//    public void onSaveInstanceState(Bundle savedInstanceState) {
-//        savedInstanceState.putInt(STATE_SCORE, mCurrentScore);
-//        savedInstanceState.putInt(STATE_LEVEL, mCurrentLevel);
-//        super.onSaveInstanceState(savedInstanceState);
-//    }
-//
-//    public void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//        mCurrentScore = savedInstanceState.getInt(STATE_SCORE);
-//        mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);
-//    }
-//    public void onClick(View view) {
-//        Intent intent = new Intent(this, DisplayMessageActivity.class);
-//        EditText editText = findViewById(R.id.editText);
-//        String message = editText.getText().toString();
-//        intent.putExtra(EXTRA_MESSAGE, message);
-//        startActivity(intent);
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        TextView text = new TextView(this);
+        Log.e(TAG, "onStart");
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TextView text = new TextView(this);
+        text.setText(R.string.resume);
+        Log.e(TAG, "onResume " + mCurrentLevel +" "+ mCurrentScore);
+    }
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+        TextView text = new TextView(this);
+        text.setText(R.string.pause);
+        mCurrentScore = 1;
+        mCurrentLevel = 2;
+        Log.e(TAG, "onPause");
+    }
+    @Override
+    protected void onStop() {
+        Log.e(TAG, "onStop");
+        super.onStop();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt(STATE_SCORE, mCurrentScore);
+        savedInstanceState.putInt(STATE_LEVEL, mCurrentLevel);
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mCurrentScore = savedInstanceState.getInt(STATE_SCORE);
+        mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);
+    }
+    public void onClick(View view) {
+        Intent intent = new Intent(this, DisplayMessageActivity.class);
+        EditText editText = findViewById(R.id.editText);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
 
 }
